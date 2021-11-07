@@ -2,22 +2,24 @@ package com.bridgelabz;
 
 public class CalculateMaxOfThreeValues {
 	public static void main(String[] args) {
-		// Three String objects initialization
-		String firstNumber = "ram";
-		String secondNumber = "ramesh" ;
-		String thirdNumber = "rama" ;
+		Integer[] intArr = {19, 1239, 999, 995};
+		Float[] floatArr = {15.55f, 14.65f, 15.22f, 18.4f};
+		String[] strArr = {"RAMESH" ,"Ramesh" , "ramesh" ,"Rama"};
 
-		String max = firstNumber ;
+		//call generic method
+		findMax(intArr);
+		findMax(floatArr);
+		findMax(strArr);
+	}
+	
+	public static <E extends Comparable<E>> void findMax(E[] arr ) {
 
-		// using compareTo method
-		if(secondNumber.compareTo(max) > 0) {
-			max = secondNumber;
+		E maximum = arr[0];
+		for(int i = 1; i < arr.length ; i++ ) {
+			if(maximum.compareTo(arr[i]) < 0) {
+				maximum = arr[i];
+			}
 		}
-		if(thirdNumber.compareTo(max) > 0) {
-			max = thirdNumber ;
-		}
-
-		// printing the maximum among three String objects
-		System.out.println("Maximum string is:"+max);
+		System.out.println("maximum is "+maximum);
 	}
 }
