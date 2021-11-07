@@ -2,28 +2,24 @@ package com.bridgelabz;
 
 public class CalculateMaxOfThreeValues {
 	public static void main(String[] args) {
-		Integer[] intArr = {19, 1239, 999, 995};
-		Float[] floatArr = {15.55f, 14.65f, 15.22f, 18.4f};
-		String[] strArr = {"RAMESH" ,"Ramesh" , "ramesh" ,"Rama"};
-		//call generic method
-		findMax(intArr);
-		findMax(floatArr);
-		findMax(strArr);
+		findMax(10,30,12);  // finding maximum for integers
+		findMax(10.33f,10.44f,10.45f); // finding maximum for floats
+		findMax("ram","ramesh","rama"); // finding maximum for Strings
 	}
+ 
+	// reliability to choose any type of variable at method level
+	public static <E extends Comparable> void findMax(E firstValue , E secondValue , E thirdValue ) {
+		E max = firstValue ;
 
-	//method to find max value
-	public static <E extends Comparable<E>> void findMax(E[] arr ) {
-		E maximum = arr[0];
-		for(int i = 1; i < arr.length ; i++ ) {
-			if(maximum.compareTo(arr[i]) < 0) {
-				maximum = arr[i];            
-			}
+		// using compareTo method
+		if(secondValue.compareTo(max) > 0) {
+			max = secondValue;
 		}
-		printMax(maximum);
-	}
+		if(thirdValue.compareTo(max) > 0) {
+			max = thirdValue ;
+		}
 
-	//print method to print the obtained max value
-	public static <E> void printMax(E max) {
-		System.out.println("Among the three the maximum is " + max);		
+		// printing the maximum among three String objects
+		System.out.println("Maximum is "+max);
 	}
 }
